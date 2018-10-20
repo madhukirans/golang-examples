@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: core-services-ad-level-canary
+  namespace: default
+  labels:
+    app: core-services-ad-level-canary
+spec:
+  type:  NodePort
+  ports:
+  - name: statsd-exporter
+    port: 9102
+    targetPort: 9102
+  selector:
+    app: sample
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: core-services-ad-level-canary
+  namespace: default
+  labels:
+    app: sample
+    chart: "sample-1"
+    release: "0.1"
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: sample
+    spec:
+      terminationGracePeriodSeconds: 1
+      #      nodeSelector:
+      #        prometheus-storage: "true"
+      imagePullSecrets:
+      - name: sre-reg-secret
+      containers:
+      - name: canary
+        image: phx.ocir.io/odx-sre/sauron/canary:0.5
+        imagePullPolicy: Always
+        env:
+        - name: UPTIME_MONITOR_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: uptime-monitor-api-key
+              key: api_key
+        volumeMounts:
+        - name: excluded-endpoints
+          mountPath: /etc/canary
+      - name: statsd-exporter
+        image: phx.ocir.io/odx-sre/sauron/statsd-exporter:0.6.0_1
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: statsd-conf
+          mountPath: /statsd
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+      - name: prometheus-pusher
+        image: phx.ocir.io/odx-sre/sauron/prometheus-pusher:1.0.1_3
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: PULL_URL_statsd
+          value: http://localhost:9102/metrics
+        - name: PUSHGATEWAY_URL
+          value: https://prometheus-gw.dev.jksc.sauron.us-phoenix-1.oracledx.com/metrics/job/k8s_cl1_federate_prometheus-metrics/instance
+        - name: SPLIT_SIZE
+          value: "5000"
+      volumes:
+      - name: excluded-endpoints
+        configMap:
+          name: core-services-ad-level-canary-config-map
+          items:
+          - key: EXCLUDED_ENDPOINTS
+            path: excluded_endpoints.txt
+      - name: statsd-conf
+        configMap:
+          name: core-services-ad-level-canary-config-map
+          items:
+          - key: STATSD_CONF
+            path: statsd_mapping.conf
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: core-services-ad-level-canary-config-map
+#  namespace: internal-canary
+#  labels:
+#    app: sample
+#    chart: "sample-1"
+#    release: "0.1"
+#data:

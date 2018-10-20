@@ -1,0 +1,90 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+metadata:
+  name: esnode
+spec:
+  serviceName: es-sts-governor
+  replicas: 1
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: es-cluster
+    spec:
+      securityContext:
+        fsGroup: 1000
+      initContainers:
+      - name: init-sysctl
+        image: busybox
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+        command: ["sysctl", "-w", "vm.max_map_count=262144"]
+      containers:
+      - name: elasticsearch
+        resources:
+          requests:
+            memory: 9Gi
+        securityContext:
+          privileged: true
+          runAsUser: 1000
+          capabilities:
+            add:
+            - IPC_LOCK
+            - SYS_RESOURCE
+        image: docker.elastic.co/elasticsearch/elasticsearch-platinum:6.2.4
+        env:
+        - name: ES_JAVA_OPTS
+          valueFrom:
+            configMapKeyRef:
+              name: es-config
+              key: ES_JAVA_OPTS
+        readinessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /_cluster/health?local=true
+            port: 9200
+          initialDelaySeconds: 5
+        ports:
+        - containerPort: 9200
+          name: es-http
+        - containerPort: 9300
+          name: es-transport
+        volumeMounts:
+        - name: es-data
+          mountPath: /usr/share/elasticsearch/data
+        - name: elasticsearch-yml
+          mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+          subPath: elasticsearch.yml
+      volumes:
+      - name: elasticsearch-yml
+        configMap:
+          name: es-config
+          items:
+          - key: elasticsearch.yml
+            path: elasticsearch.yml
+  volumeClaimTemplates:
+  - metadata:
+      name: es-data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 100Gi
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: es-config
+data:
+  elasticsearch.yml: |
+    cluster.name: your-cluster-name
+    network.host: "0.0.0.0"
+    bootstrap.memory_lock: false
+    discovery.zen.ping.unicast.hosts: es-sts-governor
+    discovery.zen.minimum_master_nodes: 1
+    xpack.security.enabled: false
+    xpack.monitoring.enabled: false
+  ES_JAVA_OPTS: -Xms4500m -Xmx4500m
+---
