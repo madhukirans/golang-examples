@@ -1,0 +1,5 @@
+RequestTimeout: 10
+UptimeRobotRequestIntervalMinutes: 10
+ExcludeEndpoints:
+   - a.html
+   - b.html

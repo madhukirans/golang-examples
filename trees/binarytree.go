@@ -15,7 +15,7 @@ func main() {
 	data := []int{17, 14, 7, 2, 3, 19, 1,99}
 	fmt.Println("hello world")
 	var root = &Node{Data: data[0]}
-	fmt.Println("roor", root)
+	fmt.Println("root", root)
 
 	for _, v := range data[1:] {
 		root.Insert(v)
