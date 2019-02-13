@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ea4a85bd-593e-49fc-875f-95d93c613e04" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/puzzle/n_fibonacci.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +37,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="go" value="99" />
+          <entry key="go" value="100" />
           <entry key="gzipreeader" value="1" />
           <entry key="json" value="3" />
           <entry key="yaml" value="8" />
@@ -44,7 +45,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Go" value="100" />
+          <entry key="Go" value="101" />
           <entry key="JSON" value="3" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="YAML" value="7" />
@@ -52,7 +53,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="go" value="13710" />
+          <entry key="go" value="13827" />
           <entry key="gzipreeader" value="289" />
           <entry key="txt" value="4" />
           <entry key="yaml" value="339" />
@@ -60,7 +61,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Go" value="13999" />
+          <entry key="Go" value="14116" />
           <entry key="PLAIN_TEXT" value="4" />
           <entry key="YAML" value="339" />
         </counts>
@@ -114,11 +115,20 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/trees/treesum.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-369">
-              <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+            <state relative-caret-position="526">
+              <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/puzzle/n_fibonacci.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -208,7 +218,6 @@
         <option value="$PROJECT_DIR$/readersandwriters/gzipreeader.go" />
         <option value="$PROJECT_DIR$/oci-config-backup.go" />
         <option value="$PROJECT_DIR$/inheritance/example1.go" />
-        <option value="$PROJECT_DIR$/trees/treesum.go" />
         <option value="$PROJECT_DIR$/oci-volumes.go" />
         <option value="$PROJECT_DIR$/pointers/structpointer.go" />
         <option value="$PROJECT_DIR$/puzzles/largestpalandrominstring.go" />
@@ -217,6 +226,8 @@
         <option value="$PROJECT_DIR$/kubernetes/custom_exporter/main.go" />
         <option value="$PROJECT_DIR$/puzzle/find_sub_matrix_with_1.go" />
         <option value="$PROJECT_DIR$/puzzle/matrix_right_down_product.go" />
+        <option value="$PROJECT_DIR$/trees/treesum.go" />
+        <option value="$PROJECT_DIR$/puzzle/n_fibonacci.go" />
       </list>
     </option>
   </component>
@@ -226,11 +237,11 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="45" />
-    <option name="y" value="117" />
-    <option name="width" value="1527" />
-    <option name="height" value="963" />
+    <option name="y" value="23" />
+    <option name="width" value="1235" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -249,6 +260,16 @@
               <item name="golang-examples" type="b2602c69:ProjectViewProjectNode" />
               <item name="golang-examples" type="462c0819:PsiDirectoryNode" />
               <item name="puzzle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="golang-examples" type="b2602c69:ProjectViewProjectNode" />
+              <item name="golang-examples" type="462c0819:PsiDirectoryNode" />
+              <item name="puzzles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="golang-examples" type="b2602c69:ProjectViewProjectNode" />
+              <item name="golang-examples" type="462c0819:PsiDirectoryNode" />
+              <item name="trees" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="golang-examples" type="b2602c69:ProjectViewProjectNode" />
@@ -364,15 +385,14 @@
     </recent_temporary>
   </component>
   <component name="ToolWindowManager">
-    <frame x="45" y="117" width="1527" height="963" extended-state="0" />
-    <editor active="true" />
+    <frame x="45" y="23" width="1235" height="777" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13265993" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16512993" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.21450777" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.66376024" visible="true" weight="0.20206659" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.66376024" weight="0.20206659" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39977604" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -420,13 +440,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="asdf" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/channels/1/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/heap/minheap.go">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -749,8 +762,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/trees/treesum.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-369">
-          <caret line="46" column="4" selection-start-line="46" selection-start-column="4" selection-end-line="46" selection-end-column="4" />
+        <state relative-caret-position="526">
+          <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/puzzle/n_fibonacci.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
         </state>
       </provider>
     </entry>
