@@ -10,7 +10,7 @@ type NodeT struct {
 }
 
 func main() {
-	data := []int{4, 2, 5, 7, 1, 9, 8, 2, 8,8,2,8,4}
+	data := []int{4, 2, 5, 7, 1, 9, 8, 2, 8, 8, 2, 8, 4}
 	var root = &NodeT{data: data[0]}
 	fmt.Println("root", root)
 
@@ -25,25 +25,25 @@ func main() {
 	fmt.Println(root.findGivenSumInSubTree(32))
 }
 
-func (n *NodeT) findGivenSumInSubTree(sum int) bool{
+func (n *NodeT) findGivenSumInSubTree(sum int) bool {
 	if n == nil {
 		return false
 	}
 
-	val  :=  n.data
+	val := n.data
 	left := 0
 	right := 0
-	if n.left != nil{
+	if n.left != nil {
 		left = left + n.left.getSum()
 	}
-	fmt.Println("left:", val + left)
+	fmt.Println("left:", val+left)
 	if n.right != nil {
 		right = right + n.right.getSum()
 	}
-	fmt.Println("right:", val + right)
+	fmt.Println("right:", val+right)
 
-	if sum == (val + left) || sum == (val+right){
-		return true,
+	if sum == (val+left) || sum == (val+right) {
+		return true
 	}
 
 	n.left.findGivenSumInSubTree(sum)
@@ -56,8 +56,8 @@ func (n *NodeT) getSum() int {
 	if n == nil {
 		return 0
 	}
-	val  :=  n.data
-	if n.left != nil{
+	val := n.data
+	if n.left != nil {
 		val = val + n.left.getSum()
 	}
 	if n.right != nil {
@@ -75,7 +75,7 @@ func (n *NodeT) insert(data int) {
 	}
 
 	if n.data == data {
-		n.count ++
+		n.count++
 		fmt.Println("Dimdnot insert", n.data, n.count)
 		return
 	}
@@ -97,8 +97,6 @@ func (n *NodeT) insert(data int) {
 		}
 	}
 }
-
-
 
 func (n *NodeT) Display() {
 	if n == nil {
