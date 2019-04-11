@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package main
 
 import "fmt"
@@ -80,3 +81,6 @@ func pop() int {
 
 	return popValue
 }
+=======
+package heap
+>>>>>>> Default Changelist

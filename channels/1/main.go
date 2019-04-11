@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"time"
+<<<<<<< HEAD
 	"reflect"
 )
 
@@ -21,6 +22,11 @@ func main(){
 	i[4] = 12
 	fmt.Println(j, i)
 
+=======
+)
+
+func main(){
+>>>>>>> Default Changelist
 	ch := make(chan int)
 
 	go producer(ch)
@@ -48,8 +54,12 @@ func consumer(ch chan int) {
 		fmt.Println("After Consume:")
 
 	}
+<<<<<<< HEAD
 }
 
 Hi Malaravan,
 Here are the stock options, which I received from Oracle. Please find the attachment.
 According to today's valuation I have $15,049  * 70Rs = 1053430/- Indian rupees.
+=======
+}
+>>>>>>> Default Changelist

@@ -6,6 +6,7 @@ import (
 	//"reflect"
 )
 
+<<<<<<< HEAD
 type AAA  struct {
 	monitors []string
 }
@@ -26,6 +27,25 @@ func main(){
 	//fmt.Println(c[0].Path("value"))
 	//m := new (AAA)
 	//m.monitors = append(m.monitors, []string (jsonParsed.Path("outter.inner.value")))
+=======
+func main(){
+	str := `
+{
+  "outter": {
+    "inner": {
+      "value": 10,
+      "value2": 20
+    },
+    "inner2": {
+      "value3": 30
+    }
+  }
+}`
+
+	jsonParsed, _ := gabs.ParseJSON([]byte(str))
+	fmt.Println(jsonParsed.Path("outter.inner").String())
+
+>>>>>>> Default Changelist
 	//s := []string {"a","b"}
 
 	//fmt.Println(reflect.TypeOf(s).String() == "[]string" )
